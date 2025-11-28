@@ -65,3 +65,35 @@ export interface ClassPerformance {
     weakStudents: string[];
   }[];
 }
+
+export interface TestQuestion {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+}
+
+export interface Test {
+  id: string;
+  title: string;
+  subject: string;
+  topics: string[];
+  subtopics: string[];
+  difficulty: 'easy' | 'medium' | 'hard';
+  questions: TestQuestion[];
+  createdBy: string;
+  createdFor?: string; // student ID for parent-created tests
+  classId?: string; // class ID for teacher-created tests
+  createdAt: Date;
+  dueDate?: Date;
+}
+
+export interface TestAttempt {
+  id: string;
+  testId: string;
+  studentId: string;
+  answers: Record<number, string>; // question index -> selected answer
+  score?: number;
+  completedAt?: Date;
+  startedAt: Date;
+}

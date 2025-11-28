@@ -8,11 +8,13 @@ import { KnowledgeMap } from "@/components/reports/KnowledgeMap";
 import { TestHistoryTable } from "@/components/reports/TestHistoryTable";
 import { PerformanceTrendChart } from "@/components/reports/PerformanceTrendChart";
 import { mockChildren, mockPerformanceData } from "@/lib/mockData";
-import { Download, TrendingUp, Target, BookOpen, Award } from "lucide-react";
+import { Download, TrendingUp, Target, BookOpen, Award, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { CreateTestDialog } from "@/components/tests/CreateTestDialog";
 
 const ParentDashboard = () => {
   const [selectedChild, setSelectedChild] = useState(mockChildren[0].id);
+  const [createTestOpen, setCreateTestOpen] = useState(false);
   const { toast } = useToast();
 
   const currentChild = mockChildren.find((child) => child.id === selectedChild);
@@ -53,6 +55,10 @@ const ParentDashboard = () => {
                   </SelectContent>
                 </Select>
               )}
+              <Button variant="outline" onClick={() => setCreateTestOpen(true)}>
+                <Plus className="mr-2 h-4 w-4" />
+                Create Test
+              </Button>
               <Button onClick={handleDownloadPDF}>
                 <Download className="mr-2 h-4 w-4" />
                 Download Report
@@ -110,6 +116,13 @@ const ParentDashboard = () => {
           <TestHistoryTable tests={performanceData.testHistory} />
         </div>
       </main>
+
+      <CreateTestDialog
+        open={createTestOpen}
+        onOpenChange={setCreateTestOpen}
+        userType="parent"
+        childId={selectedChild}
+      />
     </div>
   );
 };
