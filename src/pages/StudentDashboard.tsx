@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTests } from "@/contexts/TestContext";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Clock, CheckCircle2, TrendingUp, MessageSquare } from "lucide-react";
+import { BookOpen, Clock, CheckCircle2, TrendingUp, MessageSquare, Bot } from "lucide-react";
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -38,10 +38,16 @@ const StudentDashboard = () => {
                 View and complete your assigned tests
               </p>
             </div>
-            <Button onClick={() => navigate("/doubts")}>
-              <MessageSquare className="mr-2 h-4 w-4" />
-              Ask Doubts
-            </Button>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => navigate("/doubts")}>
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Doubts
+              </Button>
+              <Button onClick={() => navigate("/chat-doubts")}>
+                <Bot className="mr-2 h-4 w-4" />
+                AI Chat
+              </Button>
+            </div>
           </div>
         </div>
       </header>
