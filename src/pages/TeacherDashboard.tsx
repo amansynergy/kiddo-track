@@ -6,12 +6,14 @@ import { PerformanceCard } from "@/components/reports/PerformanceCard";
 import { ClassPerformanceChart } from "@/components/reports/ClassPerformanceChart";
 import { StudentWeaknessTable } from "@/components/reports/StudentWeaknessTable";
 import { mockClassPerformance } from "@/lib/mockData";
-import { Download, Users, TrendingUp, Target, BookOpen, Plus } from "lucide-react";
+import { Download, Users, TrendingUp, Target, BookOpen, Plus, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { CreateTestDialog } from "@/components/tests/CreateTestDialog";
+import { useNavigate } from "react-router-dom";
 
 const TeacherDashboard = () => {
+  const navigate = useNavigate();
   const [selectedSubject, setSelectedSubject] = useState("Mathematics");
   const [createTestOpen, setCreateTestOpen] = useState(false);
   const { toast } = useToast();
@@ -49,6 +51,10 @@ const TeacherDashboard = () => {
                   <SelectItem value="Science">Science</SelectItem>
                 </SelectContent>
               </Select>
+              <Button variant="outline" onClick={() => navigate("/doubts")}>
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Doubts
+              </Button>
               <Button variant="outline" onClick={() => setCreateTestOpen(true)}>
                 <Plus className="mr-2 h-4 w-4" />
                 Create Test
