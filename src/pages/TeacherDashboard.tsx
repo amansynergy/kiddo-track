@@ -6,7 +6,7 @@ import { PerformanceCard } from "@/components/reports/PerformanceCard";
 import { ClassPerformanceChart } from "@/components/reports/ClassPerformanceChart";
 import { StudentWeaknessTable } from "@/components/reports/StudentWeaknessTable";
 import { mockClassPerformance } from "@/lib/mockData";
-import { Download, Users, TrendingUp, Target, BookOpen, Plus, MessageSquare } from "lucide-react";
+import { Download, Users, TrendingUp, Target, BookOpen, Plus, MessageSquare, Workflow } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { CreateTestDialog } from "@/components/tests/CreateTestDialog";
@@ -54,6 +54,10 @@ const TeacherDashboard = () => {
               <Button variant="outline" onClick={() => navigate("/doubts")}>
                 <MessageSquare className="mr-2 h-4 w-4" />
                 Doubts
+              </Button>
+              <Button variant="outline" onClick={() => navigate("/flow-builder")}>
+                <Workflow className="mr-2 h-4 w-4" />
+                Flow Builder
               </Button>
               <Button variant="outline" onClick={() => setCreateTestOpen(true)}>
                 <Plus className="mr-2 h-4 w-4" />

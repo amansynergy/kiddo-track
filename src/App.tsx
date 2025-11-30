@@ -13,6 +13,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import StudentTestPage from "./pages/StudentTestPage";
 import DoubtSession from "./pages/DoubtSession";
 import ChatDoubtSession from "./pages/ChatDoubtSession";
+import FlowBuilder from "./pages/FlowBuilder";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
                 <Route path="/test/:testId" element={<StudentTestPage />} />
                 <Route path="/doubts" element={<DoubtSession />} />
                 <Route path="/chat-doubts" element={<ChatDoubtSession />} />
+                <Route path="/flow-builder" element={<FlowBuilder />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
